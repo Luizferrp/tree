@@ -1,0 +1,70 @@
+analise tecnica do código:
+
+o código se basea fortemente em recursão, usando o minimos de variáveis, sem caches, sem vetores de suporte ou
+outras estruturas que poderiam fornecer performace pela troca de gasto maior de memoria; assim provavelemente
+o código vai apresentar desempenho proximo de O(n)
+
+
+
+analize das arvores:
+
+analize de inserção:
+(1)
+100   elementos: 0.18718 milissegundos
+500   elementos: 0.112799 milissegundos
+1000  elementos: 0.171435 milissegundos
+10000 elementos: 2.47218 milissegundos
+20000 elementos: 6.717813 milissegundos
+(2)
+100   elementos: 0.700217  milissegundos
+500   elementos: 0.582931 milissegundos
+1000  elementos: 0.754659 milissegundos
+10000 elementos: 7.170936 milissegundos
+20000 elementos: 16.304167 milissegundos
+
+a inserção em arvores balanceadas é notoriamente mais complexa devido a nescessidade de balanceamento constante
+ou no minimo pela verificação da mesma;
+
+analize de remoção:
+(1)
+100   elementos: 0.108904 milissegundos
+500   elementos: 0.108772 milissegundos
+1000  elementos: 0.191827 milissegundos
+10000 elementos: 2.826371 milissegundos
+20000 elementos: 3.932213 milissegundos
+(2)
+100   elementos: 0.311242  milissegundos
+500   elementos: 0.498001 milissegundos
+1000  elementos: 0.797046 milissegundos
+10000 elementos: 6.239659 milissegundos
+20000 elementos: 13.085067 milissegundos
+
+assim como ocorre na categoria a acima, a remoção de elementos, principalmente de elementos nós (que tem filhos)
+mexe muito com a arvore, principalmente pela caracteristica de implementação recursiva que usei. No geral arvores AVL não são boas de manipulação, mesmo ambas sendo O(n), a unidade de custo do n em questão, 
+é maior por causa do balanceamento
+
+
+analize de busca:
+(1)
+100   elementos: 0.091035 milissegundos
+500   elementos: 0.100993 milissegundos
+1000  elementos: 0.206974 milissegundos
+10000 elementos: 2.332754 milissegundos
+20000 elementos: 3.323186 milissegundos
+(2)
+100   elementos: 0.10234  milissegundos
+500   elementos: 0.14038 milissegundos
+1000  elementos: 0.223605 milissegundos
+10000 elementos: 1.710259 milissegundos
+20000 elementos: 3.576664 milissegundos
+
+entre tanto arvores balanceadas tendem a serem mais rápidas em busca, o resultados aqui são tendencioso devido
+a forma de incersão dos milhares de elementos que foi usado nos testes
+
+puramente usando os dados do texto em quextão, deveriamos usar apenas arvores balanceadas, porém tendo a nota
+em mente, arvores normais são melhores para insersão e remoção, devido a auxencia de custo de balanceamento
+sendo ideal pra dados mais voláteis; e arvores AVL, melhores para dados onde a consulta é mais nescessária,
+ja que a ordenação torna isso menos custoso
+
+além disso, trocando memoria ou performace é possiver levar algumas caracteristica das arvares a O(1) ou O(logn)
+
